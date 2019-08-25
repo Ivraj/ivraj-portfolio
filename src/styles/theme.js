@@ -8,6 +8,10 @@ const theme = {
     grey: '#595C62',
     greyDark: '#303643',
     greyDarker: '#1c252b',
+    white1: '#ffffff',
+    white2: '#fcfcfc',
+    white3: '#C0C0C0',
+    white4: '#808080',
   },
   maxWidth: '1000px',
   maxWidthText: '720px',
@@ -17,6 +21,6 @@ const theme = {
     m: '900px',
     l: '1200px',
   },
-}
+};
 
-export default theme
+export default theme;

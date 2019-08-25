@@ -1,14 +1,15 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 const Title = styled.p`
   font-style: italic;
   font-size: 1.4444rem;
   position: relative;
+  color: white;
   &:before {
     content: '';
     width: 3rem;
     height: 1px;
-    background-color: ${props => props.theme.colors.grey};
+    background-color: ${props => props.theme.colors.black};
     display: inline-block;
     position: absolute;
     top: 50%;
@@ -26,6 +27,6 @@ const Title = styled.p`
       left: -35px;
     }
   }
-`
+`;
 
-export default Title
+export default Title;

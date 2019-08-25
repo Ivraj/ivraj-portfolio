@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
-import { Layout, Listing, Wrapper, Title } from '../components';
+import { Layout, Header, Listing, Wrapper, Title } from '../components';
 import website from '../../config/website';
 
 const Hero = styled.header`
   background-color: ${props => props.theme.colors.black};
   display: flex;
   align-items: center;
-  height: calc(100vh - 80px);
 `;
 
 const HeroInner = styled(Wrapper)`
@@ -17,9 +16,7 @@ const HeroInner = styled(Wrapper)`
   padding-bottom: 13rem;
   h1 {
     margin-bottom: 2rem;
-    color: ${props => props.theme.colors.white1};
   }
-
   @media (max-width: ${props => props.theme.breakpoints.l}) {
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -37,8 +34,6 @@ const HeroInner = styled(Wrapper)`
 const HeroText = styled.div`
   font-size: 1.7rem;
   line-height: 1.4;
-  color: ${props => props.theme.colors.white2};
-
   margin-bottom: 2rem;
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     font-size: 1.4rem;
@@ -65,12 +60,12 @@ const Social = styled.ul`
     }
     a {
       font-style: normal;
-      color: ${props => props.theme.colors.white3};
+      color: ${props => props.theme.colors.greyDark};
       font-size: 1.333rem;
       font-weight: 600;
       &:hover,
       &:focus {
-        color: ${props => props.theme.colors.white2};
+        color: ${props => props.theme.colors.primary};
         text-decoration: none;
       }
       @media (max-width: ${props => props.theme.breakpoints.s}) {
@@ -80,68 +75,34 @@ const Social = styled.ul`
   }
 `;
 
-const ProjectListing = styled.ul`
-  list-style-type: none;
-  margin-left: 0;
-  margin-top: 4rem;
-  li {
-    margin-bottom: 1.45rem;
-    a {
-      font-size: 2.369rem;
-      font-style: normal;
-      color: ${props => props.theme.colors.black};
-      @media (max-width: ${props => props.theme.breakpoints.s}) {
-        font-size: 1.777rem;
-      }
-    }
-  }
-`;
-
 const IndexWrapper = Wrapper.withComponent('main');
 
-class Index extends Component {
+class Posts extends Component {
   render() {
     const {
       data: { homepage, social, posts, projects },
     } = this.props;
     return (
       <Layout>
-        <Hero>
-          <HeroInner>
-            <h1>{homepage.data.title.text}</h1>
-            <HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />
-            <Social>
-              {social.nodes.map((s, index) => (
-                <li data-name={`social-entry-${index}`} key={s.primary.label.text}>
-                  <a href={s.primary.link.url}>{s.primary.label.text}</a>
-                </li>
-              ))}
-            </Social>
-          </HeroInner>
-        </Hero>
-        {/* <IndexWrapper
-          id={website.skipNavId}
-          style={{ paddingTop: '2rem', paddingBottom: '2rem' }}
-        >
-          <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
-          <Listing posts={posts.nodes} />
-          <Title style={{ marginTop: '8rem' }}>Recent projects</Title>
-          <ProjectListing>
-            {projects.nodes.map(project => (
-              <li key={project.primary.label.text}>
-                <a href={project.primary.link.url}>{project.primary.label.text}</a>
-              </li>
-            ))}
-          </ProjectListing>
-        </IndexWrapper> */}
+        <div style={{ width: '100%', height: '100%', background: 'black' }}>
+          <IndexWrapper
+            id={website.skipNavId}
+            style={{ paddingTop: '2rem', paddingBottom: '2rem', height: 'calc(100vh - 80px)' }}
+          >
+            <Header />
+
+            <Title>Posts</Title>
+            <Listing posts={posts.nodes} />
+          </IndexWrapper>
+        </div>
       </Layout>
     );
   }
 }
 
-export default Index;
+export default Posts;
 
-Index.propTypes = {
+Posts.propTypes = {
   data: PropTypes.shape({
     homepage: PropTypes.shape({
       data: PropTypes.shape({
@@ -166,7 +127,7 @@ Index.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query PostsQuery {
     homepage: prismicHomepage {
       data {
         title {

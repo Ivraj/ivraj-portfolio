@@ -1,23 +1,35 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 
 const StyledFooter = styled.footer`
   max-width: ${props => props.theme.maxWidth};
-  margin: 6rem auto 0 auto;
-  padding: 2rem;
-  color: ${props => props.theme.colors.grey};
-`
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row
+  justify-content: flex-start;
+  align-items: center;
+  color: ${props => props.theme.colors.white4};
+  a {
+    color: ${props => props.theme.colors.white4};
+
+  }
+`;
 
 class Footer extends Component {
   render() {
-    const { children } = this.props
-    return <StyledFooter>{children}</StyledFooter>
+    const { children } = this.props;
+    return (
+      <div style={{ width: '100%', height: '100%', background: 'black' }}>
+        <StyledFooter>{children}</StyledFooter>
+      </div>
+    );
   }
 }
 
-export default Footer
+export default Footer;
 
 Footer.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};

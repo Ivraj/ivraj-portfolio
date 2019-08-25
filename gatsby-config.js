@@ -1,12 +1,12 @@
 require('dotenv').config({
   path: `.env`,
-})
+});
 
-const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer')
+const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer');
 
-const website = require('./config/website')
+const website = require('./config/website');
 
-const pathPrefix = website.pathPrefix === '/' ? '' : website.pathPrefix
+const pathPrefix = website.pathPrefix === '/' ? '' : website.pathPrefix;
 
 module.exports = {
   /* General Information */
@@ -22,8 +22,6 @@ module.exports = {
     siteLanguage: website.siteLanguage,
     ogLanguage: website.ogLanguage,
     author: website.author,
-    twitter: website.twitter,
-    facebook: website.facebook,
   },
   /* Plugins */
   plugins: [
@@ -32,14 +30,12 @@ module.exports = {
     {
       resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: 'gatsby-starter-prismic',
+        repositoryName: 'ivraj-portfolio',
         accessToken: `${process.env.API_KEY}`,
         // Get the correct URLs in blog posts
         linkResolver: () => post => `/${post.uid}`,
         // PrismJS highlighting for labels and slices
         htmlSerializer: () => prismicHtmlSerializer,
-        // Remove this config option if you only have one language in your Prismic repository
-        lang: 'en-gb',
       },
     },
     'gatsby-plugin-lodash',
@@ -75,4 +71,4 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],
-}
+};

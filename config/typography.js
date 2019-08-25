@@ -1,10 +1,10 @@
-import Typography from 'typography'
+import Typography from 'typography';
 
 // This website uses the system font stack after the placed "Lora" font
 // The scaleRatio will be overwritten for smaller breakpoints in src/components/Layout
 
 const typography = new Typography({
-  title: 'Gatsby Starter Prismic.io',
+  title: 'Ivraj Portfolio',
   baseFontSize: '18px',
   baseLineHeight: 1.45,
   headerFontFamily: [
@@ -40,6 +40,6 @@ const typography = new Typography({
       marginBottom: 0,
     },
   }),
-})
+});
 
-export default typography
+export default typography;

@@ -33,7 +33,7 @@
         "allowTaggedTemplates": true
       }
     ],
-    "no-console": 0,
+    "no-console": 1,
     "no-use-before-define": 0,
     "no-underscore-dangle": 0,
     "linebreak-style": 0,
@@ -67,12 +67,15 @@
         "allowTemplateLiterals": true
       }
     ],
-    "indent": ["error", 2, {"SwitchCase": 1}],
+    "indent": ["error", 2, {
+      "SwitchCase": 1
+    }],
     "prettier/prettier": [
       "error",
       {
+        "quoteProps": "preserve",
         "trailingComma": "es5",
-        "semi": false,
+        "semi": true,
         "singleQuote": true,
         "printWidth": 120
       }
