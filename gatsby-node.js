@@ -34,7 +34,6 @@ exports.createPages = async ({ graphql, actions }) => {
   postsList.forEach(edge => {
     // The uid you assigned in Prismic is the slug!
     if (edge.node.uid !== 'template-post') {
-      console.log(edge.node.uid);
       createPage({
         path: `/${edge.node.uid}`,
         component: postTemplate,

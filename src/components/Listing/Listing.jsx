@@ -17,7 +17,6 @@ export default class Listing extends Component {
       <List>
         {posts.map(post => {
           if (post.uid !== 'template-post') {
-            console.log(post.uid);
             return <ListItem key={post.uid} node={post} />;
           }
           return <div />;
