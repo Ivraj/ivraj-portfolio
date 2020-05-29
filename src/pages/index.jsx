@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
-import { Layout, Listing, Wrapper, Title } from '../components';
-import website from '../../config/website';
+import { Layout, Wrapper } from '../components';
 
 const Hero = styled.header`
   background-color: ${props => props.theme.colors.black};
@@ -80,29 +79,10 @@ const Social = styled.ul`
   }
 `;
 
-const ProjectListing = styled.ul`
-  list-style-type: none;
-  margin-left: 0;
-  margin-top: 4rem;
-  li {
-    margin-bottom: 1.45rem;
-    a {
-      font-size: 2.369rem;
-      font-style: normal;
-      color: ${props => props.theme.colors.black};
-      @media (max-width: ${props => props.theme.breakpoints.s}) {
-        font-size: 1.777rem;
-      }
-    }
-  }
-`;
-
-const IndexWrapper = Wrapper.withComponent('main');
-
 class Index extends Component {
   render() {
     const {
-      data: { homepage, social, posts, projects },
+      data: { homepage, social },
     } = this.props;
     return (
       <Layout>
@@ -119,21 +99,6 @@ class Index extends Component {
             </Social>
           </HeroInner>
         </Hero>
-        {/* <IndexWrapper
-          id={website.skipNavId}
-          style={{ paddingTop: '2rem', paddingBottom: '2rem' }}
-        >
-          <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
-          <Listing posts={posts.nodes} />
-          <Title style={{ marginTop: '8rem' }}>Recent projects</Title>
-          <ProjectListing>
-            {projects.nodes.map(project => (
-              <li key={project.primary.label.text}>
-                <a href={project.primary.link.url}>{project.primary.label.text}</a>
-              </li>
-            ))}
-          </ProjectListing>
-        </IndexWrapper> */}
       </Layout>
     );
   }
